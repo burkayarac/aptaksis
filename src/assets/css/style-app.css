@@ -1,0 +1,29 @@
+
+ion-content{color:#46494a;--color:#46494a;}
+
+*{font-family: 'Titillium Web', sans-serif;}
+
+.invalid-feedback{
+    color: #F44336;
+    font-size: 13px;
+    margin-top: -5px;
+    margin-bottom: 5px;}
+
+.text-center{text-align: center;}
+
+
+.media-box {margin:10px;}
+.media-box ion-item{border: solid 1px #e8e7ec;  color:#3f4e59!important;}
+.media-box ion-label{--color:#3f4e59!important;}
+.media-box ion-label ion-icon{font-size: 18px; position: relative; top: 4px;}
+.media-box ion-icon{font-size: 28px;}
+.media-box ion-item-sliding{margin-bottom:10px;}
+
+.card{
+    height: 125px;
+    margin: 5px;
+}
+.card ion-card-header{
+    padding: 20px 0px;
+}
+.card ion-card-title{margin-top: -10px;}

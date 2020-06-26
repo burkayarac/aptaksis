@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Yeni Aidat Oluştur</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding" [formGroup]="formControl">
+    
+    <ion-list class="ion-padding"> 
+    
+      <div class="ion-text-center"><ion-icon size="large" name="cash-outline"></ion-icon></div>
+
+    <ion-item class="ion-no-padding">
+      <ion-label position="floating">Tarih</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" doneText="Tamam" cancelText="Vazgeç" formControlName="tarih" [(ngModel)]="data.aidatOdemeTarihi" min="{{minDate}}" max="{{maxDate}}" ></ion-datetime>
+      <div *ngIf="submitted && tb1.tarih.errors" class="invalid-feedback">
+        <div *ngIf="tb1.tarih.errors.required">Lütfen boş bırakmayınız.</div>
+      </div>
+    </ion-item>
+
+      <ion-item class="ion-no-padding">
+        <ion-label position="floating">Tutar</ion-label>
+        <ion-input type="number" formControlName="tutar" [(ngModel)]="data.aidatOdenecekTutar" min="1" max="100000"></ion-input>
+        <div *ngIf="submitted && tb1.tutar.errors" class="invalid-feedback">
+          <div *ngIf="tb1.tutar.errors.required">Lütfen boş bırakmayınız.</div>
+          <div *ngIf="tb1.tutar.errors.min">Lütfen en az 1 TL giriniz.</div>
+          <div *ngIf="tb1.tutar.errors.max">En fazla 100.000 TL girebilirsiniz.</div>
+        </div>
+    </ion-item> 
+      <ion-button expand="full" class="ion-margin-top ion-margin-bottom" (click)="Kaydet()">Oluştur</ion-button>
+  
+    </ion-list>
+  </div>
+</ion-content>

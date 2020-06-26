@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{apartmanBaslik}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+ 
+  <ion-refresher slot="fixed" pullFactor="0.5" pullMin="70" pullMax="150" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content style="margin: 10px 0px;"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+    <h6 *ngIf="!liste.length" class="ion-text-center">Harcama Bilgisi Yok</h6>
+    <ion-list lines="none" class="media-box">    
+      <ion-item-sliding *ngFor="let item of liste" detail="false" mode='md' >
+        <ion-item [routerLink]="['/harcamakayitlari-detay', {id: item.harcamaID}]">
+          <ion-label>
+            {{item.harcamaBaslik}}<br>
+            {{item.harcamaTarih | date: 'dd.MM.yyyy'}}
+          </ion-label>
+          <div side="end" style="border-left: solid 1px #ddd; padding-left:10px; text-align: right;">
+            <ion-label color="danger" style="font-size:14px;font-weight: 600;">-{{item.harcamaTutar}} TL</ion-label>
+          </div>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>  
+
+  
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" [routerLink]="['/harcamakayitlari-yenikayit',{id:id}]">
+    <ion-fab-button color="primary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

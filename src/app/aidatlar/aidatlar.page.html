@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>Aidatlar</ion-title>
+
+      <ion-thumbnail slot="end" class="ion-margin-end">
+        <ion-img src="../../assets/img/logo-icon.png"></ion-img>
+      </ion-thumbnail> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  
+
+  <ion-refresher slot="fixed" pullFactor="0.5" pullMin="70" pullMax="150" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content style="margin: 10px 0px;"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+<ion-list lines="none" class="media-box">    
+  <ion-item-sliding *ngFor="let item of liste" detail="false" mode='md' >
+    <ion-item [routerLink]="['aidatkayitlari', {id: item.apartmanID}]">
+      <ion-icon name="business-outline" slot="start"></ion-icon>
+      <ion-label>
+        {{item.apartmanBaslik}}
+      </ion-label>
+      <ion-badge *ngIf="item.apartmanAidatSayi>0" color="danger" slot="end">{{item.apartmanAidatSayi}} Ödenmemiş</ion-badge>
+    </ion-item>
+  </ion-item-sliding>
+</ion-list>
+
+
+</ion-content>

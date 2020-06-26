@@ -1,0 +1,33 @@
+
+<ion-content>
+
+  <div class="text-center ion-margin-top ion-padding-top">
+    <img src="../../assets/img/logo.png" class="ion-margin-top" width="200px"/>
+  </div>
+  
+  <div class="ion-padding" [formGroup]="formControl">
+  <ion-list class="ion-padding"> 
+
+    <ion-item class="ion-no-padding">
+      <ion-label position="floating">E-posta</ion-label>
+      <ion-input type="email" formControlName="eposta" [(ngModel)]="data.yoneticiEposta"></ion-input>
+      <div *ngIf="submitted && tb1.eposta.errors" class="invalid-feedback">
+        <div *ngIf="tb1.eposta.errors.email">Eposta formatı geçersiz.</div>
+      </div>
+    </ion-item>
+  
+      <ion-item class="ion-no-padding">
+        <ion-label position="floating">Şifre</ion-label>
+        <ion-input type="password"  formControlName="sifre" [(ngModel)]="data.yoneticiSifre"></ion-input>
+        <div *ngIf="submitted && tb1.sifre.errors" class="invalid-feedback">
+          <div *ngIf="tb1.sifre.errors.required">Lütfen boş bırakmayınız.</div>
+          <div *ngIf="tb1.sifre.errors.minlength">En az 4 karakter giriniz.</div>
+        </div>
+      </ion-item> 
+
+    <ion-button expand="full" class="ion-margin-top ion-margin-bottom" (click)="GirisYap()">Giriş Yap</ion-button>
+
+    <ion-button [routerLink]="['/kayitol']" expand="full" color="light" class="ion-margin-top ion-margin-bottom">Üye Değil misin?</ion-button>
+  </ion-list>
+</div>
+</ion-content>

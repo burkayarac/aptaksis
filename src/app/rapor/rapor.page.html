@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>Raporlar</ion-title>
+
+      <ion-thumbnail slot="end" class="ion-margin-end">
+        <ion-img src="../../assets/img/logo-icon.png"></ion-img>
+      </ion-thumbnail> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+
+  <ion-grid class="ion-margin-top ion-padding-top">
+    <ion-row>
+      <ion-col>
+        <ion-title>Hoşgeldin {{dataService.uyeBilgisi.yoneticiAdSoyad}},</ion-title></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-title size="small"><ion-text color="primary">APTAKSİS</ion-text> üzerinden hızlı bir şekilde apartmanları tanımlayabilir, daireler oluşturabilirsin. Dairelerin aidat bilgilerini ve apartman için harcamaları kalem olarak görüntüleyebilirsin.</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-grid class="ion-margin-top ion-padding-top">
+    <ion-row>
+      <ion-col size="6">
+        <ion-card class="card">
+          <ion-card-header class="ion-text-center">
+            <ion-icon name="business-outline" size="large" color="primary"></ion-icon>
+            <ion-card-subtitle>
+              APARTMAN</ion-card-subtitle>
+            <ion-card-title><small>{{data.apartmanToplam}}</small></ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="card">
+          <ion-card-header class="ion-text-center">
+            <ion-icon name="home-outline" size="large" color="primary"></ion-icon>
+            <ion-card-subtitle>DAİRE</ion-card-subtitle>
+            <ion-card-title><small>{{data.daireToplam}}</small></ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="card">
+          <ion-card-header class="ion-text-center">
+            <ion-icon name="receipt-outline" size="large" color="primary"></ion-icon>
+            <ion-card-subtitle>ALINACAK AİDAT</ion-card-subtitle>
+            <ion-card-title><small>{{data.aidatDaireToplam}} DAİRE</small></ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="card">
+          <ion-card-header class="ion-text-center">
+            <ion-icon name="cash-outline" size="large" color="primary"></ion-icon>
+            <ion-card-subtitle>ALINACAK TUTAR</ion-card-subtitle>
+            <ion-card-title><small>{{data.aidatToplam}} TL</small></ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+</ion-content>

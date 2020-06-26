@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{apartmanBaslik}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment [(ngModel)]="tab">
+    <ion-segment-button value="odemeBekleyenler" (click)="OdemeBekleyenListe()">
+      <ion-label>Ödeme Bakleyenler</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="aidatlar" (click)="AidatListe()">
+      <ion-label>Aidatlar</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <div *ngIf="tab == 'odemeBekleyenler'" style="margin-bottom:75px">
+    <h6 *ngIf="!odemeBekleyenListe.length" class="ion-text-center">Ödeme Alınacak Daire Yok</h6>
+    <ion-list lines="none" class="media-box">    
+      <ion-item-sliding *ngFor="let item of odemeBekleyenListe" detail="false" mode='md' >
+        <ion-item [routerLink]="['/aidatkayitlari-detay', {id: item.aidatID}]">
+          <ion-badge color="primary" slot="start">NO {{item.daireKapiNo}}</ion-badge>
+          <ion-label>
+            {{item.aidatOdemeTarihi | date: 'dd.MM.yyyy'}}
+          </ion-label>
+          <div side="end" style="border-left: solid 1px #ddd; padding-left:10px; text-align: right;">
+            <ion-label color="danger" style="font-size:14px;font-weight: 600;">-{{item.aidatOdenecekTutar}} TL</ion-label>
+          </div>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+   
+  
+
+
+  <div *ngIf="tab == 'aidatlar'" style="margin-bottom:75px">
+    <h6 *ngIf="!aidatListe.length" class="ion-text-center">Geçmiş Aidat Bilgisi Bulunmamaktadır</h6>
+    <ion-list lines="none" class="media-box">    
+      <ion-item-sliding *ngFor="let item of aidatListe" detail="false" mode='md' >
+        <ion-item>
+          <ion-icon name="calendar" slot="start"></ion-icon>
+          <ion-label>
+            {{item.aidatOdemeTarihi | date: 'dd.MM.yyyy'}}
+          </ion-label>
+          <div side="end" style="border-left: solid 1px #ddd; padding-left:10px; text-align: right;">
+            <ion-label color="primary" style="font-size:14px;font-weight: 600;">{{item.toplamOdenenTutar}} TL</ion-label>
+            <ion-label color="danger" style="font-size:14px;font-weight: 600;">-{{item.toplamOdenecekTutar}} TL</ion-label>
+          </div>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+
+  
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" [routerLink]="['/aidatkayitlari-yenikayit',{id:id}]">
+    <ion-fab-button color="primary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

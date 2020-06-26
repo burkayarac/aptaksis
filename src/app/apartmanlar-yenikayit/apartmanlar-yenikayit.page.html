@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Yeni Apartman Oluştur</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding" [formGroup]="formControl">
+    
+
+    <ion-list class="ion-padding"> 
+   
+      <div class="ion-text-center"><ion-icon size="large" name="business-outline"></ion-icon></div>
+      <ion-item class="ion-no-padding">
+        <ion-label position="floating">Apartman Adı</ion-label>
+        <ion-input type="text" formControlName="apartmanbaslik" [(ngModel)]="data.apartmanBaslik"></ion-input>
+        <div *ngIf="submitted && tb1.apartmanbaslik.errors" class="invalid-feedback">
+          <div *ngIf="tb1.apartmanbaslik.errors.required">Lütfen boş bırakmayınız.</div>
+        </div>
+    </ion-item> 
+      <ion-item class="ion-no-padding">
+        <ion-label position="floating">Daire Sayısı</ion-label>
+        <ion-input type="number" formControlName="daireadet" [(ngModel)]="data.daireAdet" min="1" max="99"></ion-input>
+        <div *ngIf="submitted && tb1.daireadet.errors" class="invalid-feedback">
+          <div *ngIf="tb1.daireadet.errors.required">Lütfen boş bırakmayınız.</div>
+          <div *ngIf="tb1.daireadet.errors.min">Lütfen en az 1 adet daire giriniz.</div>
+          <div *ngIf="tb1.daireadet.errors.max">En fazla 99 adet girebilirsiniz.</div>
+        </div>
+    </ion-item> 
+      <ion-button expand="full" class="ion-margin-top ion-margin-bottom" (click)="Kaydet()">Oluştur</ion-button>
+  
+    </ion-list>
+  </div>
+</ion-content>
